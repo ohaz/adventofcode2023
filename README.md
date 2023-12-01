@@ -1,6 +1,8 @@
-# adventofcode base template
+# adventofcode2023
 
-This is a base template in python to use for new repos for advent of code solutions
+These are my solutions for the [advent of code](https://adventofcode.com/2023) challenges of the year 2023.
+
+Keep in mind that the solutions provided here most of the time do not follow clean code or any other quality metrics, as I try to solve the tasks as quickly as possible.
 
 ## Requirements
 
@@ -17,10 +19,6 @@ If you want to use this script to create folders and download inputs for new day
 * Log in to AOC in a browser
 * Run aocd-token in a console. This searches for the session cookie of your login and stores it in `~/.config/aocd/token`. It's used to download the current days input (see https://pypi.org/project/advent-of-code-data/).
 * Now you can use `python create.py` to download the next available day.
-
-### Configuration
-
-Edit create.py to set `YEAR` to the correct value
 
 ### Running
 
