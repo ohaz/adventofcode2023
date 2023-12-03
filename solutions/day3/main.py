@@ -1,4 +1,5 @@
 import os
+from collections import defaultdict
 
 def get_example_input():
     s = """467..114..
@@ -62,5 +63,32 @@ def task1():
                 current_numbers = []
     return sum(valid_numbers)
 
+def check_adjacent_star(x, y, _map):
+    for coordinate in adjacent_coordinates(x, y):
+        if _map[coordinate[0]][coordinate[1]] == '*':
+            return (coordinate[0], coordinate[1])
+    return None
+
 def task2():
-    return ''
+    prepared_map = prepare_map(get_input())
+    valid_numbers = defaultdict(list)
+    current_numbers = []
+    current_valid = []
+    for x, line in enumerate(prepared_map):
+        for y, char in enumerate(line):
+            if char.isdigit():
+                if len(current_valid) == 0:
+                    result = check_adjacent_star(x, y, prepared_map)
+                    if result:
+                        current_valid.append(result)
+                current_numbers.append(char)
+            else:
+                for valid in current_valid:
+                    valid_numbers[(valid[0], valid[1])].append(int(''.join(current_numbers)))
+                current_valid = []
+                current_numbers = []
+    result_sum = 0
+    for value in valid_numbers.values():
+        if len(value) == 2:
+            result_sum += value[0] * value[1]
+    return result_sum
