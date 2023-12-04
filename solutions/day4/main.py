@@ -25,8 +25,8 @@ def task1():
     result = 0
     for line in get_input():
         left, right = parseline(line)
-        union = set(left).intersection(set(right))
-        result += int(math.pow(2, len(union) - 1))
+        intersection = set(left).intersection(set(right))
+        result += int(math.pow(2, len(intersection) - 1))
     return result
 
 def task2():
@@ -34,7 +34,7 @@ def task2():
     amount = [1 for _ in inp]
     for index, line in enumerate(inp):
         left, right = parseline(line)
-        union = set(left).intersection(set(right))
-        for i in range(len(union)):
+        intersection = set(left).intersection(set(right))
+        for i in range(len(intersection)):
             amount[index + i + 1] += amount[index]
     return sum(amount)
