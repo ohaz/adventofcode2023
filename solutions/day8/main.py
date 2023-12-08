@@ -63,11 +63,6 @@ XXX = (XXX, XXX)"""
 def find_starts(guides):
     return [x for x in guides.keys() if x.endswith('A')]
 
-def done(current):
-    if any([x for x in current if not x.endswith('Z')]):
-        return False
-    return True
-
 def task2():
     steps, guides = parse_input(get_input())
     current = find_starts(guides)
